@@ -11,6 +11,7 @@ Si un fichier lit `stop_id` comme un nombre (1001) et l'autre comme du texte ("1
 
 
 ## 4. Volume de lignes : par ligne de bus vs par arrêt
+Par arrêt : 5000 lignes × 96 relevés par jour × 84 jours ~ 40 millions de lignes, beaucoup trop pour un fichier dans Git. Par ligne de bus : 30 × 96 × 84 ~ 240 000 lignes, ça reste raisonnable. Mais on ne peut plus savoir à quels arrêts précis les retards se produisent.
 
 ## 5. Alternative au code couleur du graphique des retards
 
