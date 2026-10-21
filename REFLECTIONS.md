@@ -14,6 +14,7 @@ Si un fichier lit `stop_id` comme un nombre (1001) et l'autre comme du texte ("1
 Par arrêt : 5000 lignes × 96 relevés par jour × 84 jours ~ 40 millions de lignes, beaucoup trop pour un fichier dans Git. Par ligne de bus : 30 × 96 × 84 ~ 240 000 lignes, ça reste raisonnable. Mais on ne peut plus savoir à quels arrêts précis les retards se produisent.
 
 ## 5. Alternative au code couleur du graphique des retards
+je mettrais le vert autour de 0 (à l'heure), et du rouge des deux côtés : quand le bus est très en retard, mais aussi quand il est très en avance. Avec la règle actuelle, une ligne qui passe 3 minutes en avance a l'air parfaite, alors que les gens ratent leur bus. Avec ma règle, on verrait que cette ligne a aussi un problème de régularité.
 
 ## 6. Raisonnement réel sur le décalage de fréquence statique / temps réel
 
