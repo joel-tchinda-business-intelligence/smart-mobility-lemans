@@ -90,6 +90,22 @@ def main():
     print(f"Wrote data/gtfs_static/routes.csv ({len(routes)} rows)")
     print("Top 5 busiest stops:")
     print(freq[["stop_name", "daily_trip_count", "nearest_commune"]].head(5).to_string(index=False))
+    # Supply vs population, per commune
+    supply = freq.groupby("nearest_commune").agg(
+        n_stops=("stop_id", "count"),
+        daily_stop_visits=("daily_trip_count", "sum"),
+    ).reset_index().rename(columns={"nearest_commune": "commune"})
+    supply = communes_df[["commune", "population"]].merge(supply, on="commune", how="left").fillna(0)
+    supply["n_stops"] = supply["n_stops"].astype(int)
+    supply["daily_stop_visits"] = supply["daily_stop_visits"].astype(int)
+    supply["visits_per_1000_residents"] = (supply["daily_stop_visits"] / supply["population"] * 1000).round(1)
+    supply = supply.sort_values("visits_per_1000_residents", ascending=False)
+
+    supply.to_csv("data/gtfs_static/commune_supply.csv", index=False)
+    os.makedirs("docs/data", exist_ok=True)
+    supply.to_json("docs/data/commune_supply.json", orient="records", indent=2)
+    print("Supply per commune:")
+    print(supply.to_string(index=False))
 
 if __name__ == "__main__":
     main()
