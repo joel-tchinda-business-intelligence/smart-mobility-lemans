@@ -25,7 +25,7 @@ Donc la fréquence doit suivre la vitesse à laquelle la donnée change.
 le 21/10 vers 11h40, la ligne 5 était la plus en retard avec environ 2 minutes de retard moyen. Ce n'est pas l'heure de pointe, donc c'est un peu surprenant, mais 2 minutes reste un retard normal en ville. Ça me paraît crédible.
 
 Le cas le plus bizarre est la ligne 34, avec environ 16 minutes d'avance en moyenne. Un bus ne roule pas 16 minutes en avance en réalité, il attendrait à un arrêt. Je pense plutôt que c'est un artefact de données : par exemple un trajet mal recalé par rapport à l'horaire théorique, ou très peu de trajets observés, donc une seule valeur aberrante suffit à fausser la moyenne. Cette seule ligne tire aussi la moyenne du réseau à -41,6 s, ce qui donne une fausse impression que tout le réseau est en avance
-
+15 minutes plus tard (relevé de 09:53 UTC), la ligne 34 n'était plus qu'à environ 37 secondes d'avance, ce qui confirme que les 16 minutes étaient une anomalie ponctuelle et pas un vrai problème de la ligne. La ligne 5 était toujours la plus en retard dans les deux relevés, donc ce retard paraît plus fiable. Ça montre qu'il ne faut pas tirer de conclusion à partir d'un seul relevé.
 ## 8. Cas où la population trompe comme indicateur de demande
 
 ## 9. Mon indicateur offre / population, et une commune où il trompe
