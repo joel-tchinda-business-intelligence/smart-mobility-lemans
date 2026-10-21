@@ -13,7 +13,12 @@
   #alerts { padding: 0.8rem 1rem; border: 2px solid #c46e0a; border-radius: 8px; background: #faf3e8; }
   #alerts.none { border-color: #2c9c4a; background: #f0f8f2; }
   canvas { margin-top: 2rem; }
-  #updated { color: #666; font-size: 0.85rem; }
+ #updated { color: #666; font-size: 0.85rem; }
+  table { border-collapse: collapse; width: 100%; margin-top: 1rem; }
+  th, td { border: 1px solid #ddd; padding: 0.4rem 0.6rem; text-align: left; }
+  th { background: #f4f4f4; }
+
+Trouve :
 </style>
 </head>
 <body>
@@ -23,6 +28,10 @@
   <div id="alerts">Loading alerts...</div>
   <canvas id="delayChart" height="320"></canvas>
   <p id="updated"></p>
+
+  <h2>Transport supply vs population, by commune</h2>
+  <p>Scheduled bus/tram stop-visits on a typical weekday, per 1,000 residents. Population is used as a proxy for demand (real ridership data is not public).</p>
+  <table id="supplyTable"><tr><td>Loading...</td></tr></table>
 
 <script>
 fetch('data/current_state.json')
@@ -105,6 +114,21 @@ fetch('data/current_state.json')
     document.getElementById('kpis').innerHTML =
       '<p>Could not load network status (' + err + '). Check that ' +
       '<code>docs/data/current_state.json</code> exists in the repo.</p>';
+  });
+</script>
+<script>
+fetch('data/commune_supply.json')
+  .then(r => r.json())
+  .then(rows => {
+    const header = '<tr><th>Commune</th><th>Population</th><th>Stops</th><th>Daily stop-visits</th><th>Per 1,000 residents</th></tr>';
+    const body = rows.map(r =>
+      `<tr><td>${r.commune}</td><td>${r.population}</td><td>${r.n_stops}</td><td>${r.daily_stop_visits}</td><td>${r.visits_per_1000_residents}</td></tr>`
+    ).join('');
+    document.getElementById('supplyTable').innerHTML = header + body;
+  })
+  .catch(() => {
+    document.getElementById('supplyTable').innerHTML =
+      '<tr><td>No supply data yet -- run the "Build static reference" workflow.</td></tr>';
   });
 </script>
 </body>
