@@ -7,6 +7,8 @@ je pense que le plus facile sera de voir l'état du réseau en ce moment c'est a
 Les horaires théoriques ne changent presque jamais, la SETRAM les met à jour seulement de temps en temps. Les télécharger toutes les 15 minutes donnerait toujours le même fichier, ce serait du gaspillage.
 
 ## 3. Jointure sur des colonnes d'ID typées différemment (prédiction)
+Si un fichier lit `stop_id` comme un nombre (1001) et l'autre comme du texte ("1001"), Python les considère comme différents. La jointure ne trouve pas de correspondance, ou plante, et on perd des arrêts sans forcément s'en rendre compte. C'est pour ça que le script lit tout en texte avec `dtype=str`.
+
 
 ## 4. Volume de lignes : par ligne de bus vs par arrêt
 
