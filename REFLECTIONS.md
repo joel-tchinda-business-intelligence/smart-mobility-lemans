@@ -1,8 +1,10 @@
 # Réflexions TD2 — Smart Mobility Le Mans
 
 ## 1. Sous-questions faciles vs difficiles (avant de construire)
+je pense que le plus facile sera de voir l'état du réseau en ce moment c'est a dire quelles lignes sont en retard. Le plus difficile sera de savoir où sont les vrais besoins, parce qu'on n'a pas les données de fréquentation, et de trouver des tendances récurrentes, parce qu'il faut plusieurs semaines d'historique.
 
 ## 2. Pourquoi le flux statique n'est pas rafraîchi toutes les 15 minutes (prédiction)
+Les horaires théoriques ne changent presque jamais, la SETRAM les met à jour seulement de temps en temps. Les télécharger toutes les 15 minutes donnerait toujours le même fichier, ce serait du gaspillage.
 
 ## 3. Jointure sur des colonnes d'ID typées différemment (prédiction)
 
