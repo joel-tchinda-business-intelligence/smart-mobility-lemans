@@ -17,6 +17,9 @@ Par arrêt : 5000 lignes × 96 relevés par jour × 84 jours ~ 40 millions de li
 je mettrais le vert autour de 0 (à l'heure), et du rouge des deux côtés : quand le bus est très en retard, mais aussi quand il est très en avance. Avec la règle actuelle, une ligne qui passe 3 minutes en avance a l'air parfaite, alors que les gens ratent leur bus. Avec ma règle, on verrait que cette ligne a aussi un problème de régularité.
 
 ## 6. Raisonnement réel sur le décalage de fréquence statique / temps réel
+Statique toutes les 15 min : inutile, car les horaires changent quelques fois par an, on referait le même calcul pour rien et on remplirait Git de commits identiques.
+Temps réel une fois par mois : on aurait une seule photo du réseau par mois, prise à une heure au hasard. Les retards changent toutes les minutes, donc on raterait les heures de pointe et les perturbations, et l'historique ne voudrait rien dire.
+Donc la fréquence doit suivre la vitesse à laquelle la donnée change.
 
 ## 7. Vérification d'une ligne en retard par rapport à la réalité
 
